@@ -78,6 +78,8 @@
      <Compile Include="Assets\Bricks\Scripts\Grid.cs" />
      <Compile Include="Assets\Bricks\Scripts\Singleton.cs" />
      <Compile Include="Assets\Bricks\Scripts\TapToPlace.cs" />
+     <Compile Include="Assets\BunnyController.cs" />
+     <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
