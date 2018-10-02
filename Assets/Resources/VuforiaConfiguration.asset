@@ -12,21 +12,16 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: AcG7tOP/////AAABmRD9fUL2S0e/sNC4XovqgYIliE/1yBlJRVLTxckORnnNkSMV0Fc4/ONa3xUbJISkTZrCs/pRV7d4h+8guPfYYbhf3fOXwH3ywvYl8NvF9mM5cDwwZZmAxVfPTDbmBSTYm0sPdQ1muqZJGUcbNAHbgvnqLBVbCu9WFwVOsp/UBxQ4gMqKcQ9iego4ZU4QFuVlorxqt1dqZgTrUYxmIW0gLCwv2l0QlimdhuKl+N6SirgIEZl6XWbHIVeE0rs7hFWP7wOfmuwfpKjGFB/uMud5xtkhl/J2HVch/VL+4H2GGA7l5+nC3MvW4r68uCAnKJCsMB5I098n6D5qlYYtzOJCkHWCqKYKLhfvqT7ykOpU2uIb
-    ufoLicenseKey: QVIzZ0orUC8vLy8vQUFBQUtHRmJJYmFadGtGeXNpbTUvNnVNWFZadjJVZzhDVHdwQkhaZTV0REk1ZElwUElRUmdIcGhnU3VxRDY5azd2RFM3Wm4wb0cxckVkKzF2THN4YWFoV3RSalArd0ZIQ1VTdWs1Z3BoUU5EUHcyMVR6ejcycFpmdWpPc0wrYUtQNjJtUmZpQ2g0SzFHVEM2UEJldGtwN3p6NmZsWjdialR1TE1CaVk5RTh2N3Z0L3NWbCswSlRrQ0EySjIzcjNLN1IzL1VnU1o4RGlZQmxISlNQeWxHK3dMcVFWZ1FTY3FYeVU0VGNxRWJBTFpRay9oWkVic2tFU3EwRXhGdDlGdHRhRkpQM0tTNjdnVUt3b1VkWWg5SWYxd0VhcFl0K0xmTWZnVnQvMHlZbCtXRGNGbWVUdlRWdkk0SzM1Q3Jlbk1LdEJoWW10aW9GS3FmODV2YVdzQU9tWElkYy8rZVBYdG8vdWQwUkxlb2lLZEtzWEY=
+    vuforiaLicenseKey: 
+    ufoLicenseKey: QVhRYklESC8vLy8vQUFBQUtKcVU5K293dkVlV2dQMnlCeXo3VkUwdm15VStid0xNanZqN08yUGZGeUljTnlWU0NyMVQwUm5UcnVhZE1KN2tsUGtIM2FTVWZSUFF6SnhzMGhBcDVkOVY1d2ZGdzFINnU4REppdVh3amVuQ1BMeHhDdGk3bk5rZHU3TVFoMThaY0JWeU5BcFVyU29XaExtTGRWVnFOVlg0NFRKRE84NmtvRDFLWnFsdU9za2NyTnhIRUtDVVRGOFRTamc0RGlrb0c2bE9UMHRBaUNselg1cGRkemZuSXBWL3JKVkZGbHNsdXNHVk56WUV6cjd5Zkh1SjF3SGtjVExRY1I2NnFQVTFIOWhCUHpMYjFXSkg5MTZtclFCcHhyVEszNVRlN0xHeTIra0d4S1NFdVVUM3l3cStZQXFPdFpWbGU1U3FkUnRJVDY3enlSQU1lNWV5SGhBMjZ4aGQ0N0x6OVpKNnlGOFZJdDA1clZBM080aWw=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
-    maxSimultaneousImageTargets: 5
-    maxSimultaneousObjectTargets: 5
+    maxSimultaneousImageTargets: 1
+    maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     cameraDirection: 0
     mirrorVideoBackground: 0
-<<<<<<< HEAD
     version: 7.2.23
-=======
-    version: 7.5.20
-    eulaAccepted: 1
->>>>>>> 7e9bd405ffb04ef5db827a64231fafcecdd4ec5c
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31
@@ -51,8 +46,8 @@ MonoBehaviour:
   videoBackground:
     clippingMode: 0
     numDivisions: 2
-    videoBackgroundShader: {fileID: 4800000, guid: f40623b353e2f1943b1b3ba42975db7a,
-      type: 3}
+    videoBackgroundShader: {fileID: 15311, guid: 0000000000000000f000000000000000,
+      type: 0}
     matteShader: {fileID: 15310, guid: 0000000000000000f000000000000000, type: 0}
     videoBackgroundEnabled: 1
   deviceTracker:

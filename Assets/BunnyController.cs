@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BunnyController : MonoBehaviour {
     private Transform player;
+    private int health;
     // Use this for initialization
     void Start () {
 		player  = GameObject.FindGameObjectWithTag("Player").transform;
@@ -14,5 +15,10 @@ public class BunnyController : MonoBehaviour {
         GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
         GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0 );
 
+    }
+
+    public void decreaseHealth()
+    {
+        health -= 10;
     }
 }
