@@ -21,7 +21,12 @@ MonoBehaviour:
     useDelayedLoadingObjectTargets: 0
     cameraDirection: 0
     mirrorVideoBackground: 0
+<<<<<<< HEAD
     version: 7.2.23
+=======
+    version: 7.5.20
+    eulaAccepted: 1
+>>>>>>> 7e9bd405ffb04ef5db827a64231fafcecdd4ec5c
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31
