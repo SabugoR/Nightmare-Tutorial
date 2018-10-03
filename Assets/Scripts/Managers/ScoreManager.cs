@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static int score;
 
+    [SerializeField] int mCurrentHighScore = 0;
+    [SerializeField] Text mCurrentHighScoreText;
 
     Text text;
 
@@ -20,5 +22,12 @@ public class ScoreManager : MonoBehaviour
     void Update ()
     {
         text.text = "Score: " + score;
+    }
+
+    
+    public void UpdateHighScore()
+    {
+        mCurrentHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        mCurrentHighScoreText.text = mCurrentHighScore.ToString();
     }
 }
