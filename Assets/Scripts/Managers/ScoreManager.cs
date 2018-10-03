@@ -5,23 +5,21 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
-
     [SerializeField] int mCurrentHighScore = 0;
     [SerializeField] Text mCurrentHighScoreText;
-
+    HUDManager hudManager = null;
     Text text;
 
 
     void Awake ()
     {
-        text = GetComponent <Text> ();
-        score = 0;
+        hudManager = GetComponent<HUDManager>();
     }
 
 
     void Update ()
     {
-        text.text = "Score: " + score;
+        hudManager.UpdateCurrentNumberOfKills(score);
     }
 
     
@@ -29,5 +27,10 @@ public class ScoreManager : MonoBehaviour
     {
         mCurrentHighScore = PlayerPrefs.GetInt("HighScore", 0);
         mCurrentHighScoreText.text = mCurrentHighScore.ToString();
+    }
+
+    public void UpdateCurrentScore()
+    {
+        score++;
     }
 }

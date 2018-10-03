@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;
     public int scoreValue = 10;
     public AudioClip deathClip;
-
+    public ScoreManager scoreManager = null;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio = GetComponent <AudioSource> ();
         hitParticles = GetComponentInChildren <ParticleSystem> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
-
+        scoreManager = GetComponent<ScoreManager>();
         currentHealth = startingHealth;
     }
 
@@ -61,7 +61,8 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
 
         capsuleCollider.isTrigger = true;
-
+        // Update the player's current score by +1:
+        scoreManager.UpdateCurrentScore();
         anim.SetTrigger ("Dead");
 
         enemyAudio.clip = deathClip;

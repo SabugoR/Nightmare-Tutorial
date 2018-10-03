@@ -9,7 +9,8 @@ public class ScenesManager : MonoBehaviour
     }
     public void OnReturnButtonClicked() {
         Debug.Log("return button");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        // Go back to main menu from everywhere in the game:
+        SceneManager.LoadScene(0);
     }
 
     public void OnCongratulateClicked() {
