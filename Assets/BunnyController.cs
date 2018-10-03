@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class BunnyController : MonoBehaviour {
     private Transform player;
-    private int health;
+
+    public int Health { get; internal set; }
+
     // Use this for initialization
     void Start () {
+        Health = 100;
 		player  = GameObject.FindGameObjectWithTag("Player").transform;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
-        GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0 );
+        if (Health > 0)
+        {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
+            GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+        }
 
     }
 
     public void decreaseHealth()
     {
-        health -= 10;
+        Health -= 10;
     }
 }

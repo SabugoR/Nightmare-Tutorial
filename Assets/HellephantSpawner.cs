@@ -8,8 +8,8 @@ public class HellephantSpawner : MonoBehaviour {
 
     float timer = 0;
     int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 10f;
-    int numberOfTotalSpawns = 3;
+    float timeBetweenSpawns = 1f;
+    int numberOfTotalSpawns = 1;
     List<GameObject> spawnedObjects = new List<GameObject>();
 
     [SerializeField] GameObject toSpawn;
@@ -36,8 +36,13 @@ public class HellephantSpawner : MonoBehaviour {
     public void Hit(string name)
     {
         GameObject selected = spawnedObjects.Find(x => x.name.Equals(name));
-        selected.GetComponent<HellephantController>().decreaseHealth();
-
-        throw new NotImplementedException();
+        HellephantController controller = selected.GetComponent<HellephantController>();
+        controller.decreaseHealth();
+        if (controller.Health <= 0)
+        {
+            selected.GetComponent<Animator>().SetTrigger("HasDied");
+            selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            Destroy(selected, 2f);
+        }
     }
 }

@@ -42,10 +42,8 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(shootRay, out shootHit, Mathf.Infinity))
         {
-            // Try and find an EnemyHealth script on the gameobject hit.
-            //EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
             Debug.Log("Hit: " + shootHit.collider.name);
-
+            gManager.HitEnemy(shootHit.collider.name);
         }
     }
 }

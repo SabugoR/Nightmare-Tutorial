@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    ZomBunnySpawner bunnySpawner;
-    ZomBearSpawner bearSpawner;
-    HellephantSpawner elephantSpawner;
+    [SerializeField] ZomBunnySpawner bunnySpawner;
+    [SerializeField] ZomBearSpawner bearSpawner;
+    [SerializeField] HellephantSpawner elephantSpawner;
     // Use this for initialization
     void Start () {
 		
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 
     public void HitEnemy(string name)
     {
+        Debug.Log("HitEnemy " + name);
         if (name.Contains("Bunny"))
             bunnySpawner.Hit(name);
         if (name.Contains("Bear"))

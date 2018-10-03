@@ -74,12 +74,14 @@
      <Compile Include="Assets\_Complete-Game\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\_Complete-Game\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\_Complete-Game\Scripts\Player\PlayerShooting.cs" />
+     <Compile Include="Assets\BearController.cs" />
      <Compile Include="Assets\BunnyController.cs" />
      <Compile Include="Assets\Fork Particle Variety Pack FX\Assets\Scripts\ForkAPI\CanvasButtonController.cs" />
      <Compile Include="Assets\Fork Particle Variety Pack FX\Assets\Scripts\ForkAPI\ForkParticleEffect.cs" />
      <Compile Include="Assets\Fork Particle Variety Pack FX\Assets\Scripts\ForkAPI\ForkParticlePlugin.cs" />
      <Compile Include="Assets\Fork Particle Variety Pack FX\Assets\Scripts\ForkAPI\PSBAsset.cs" />
      <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\HellephantController.cs" />
      <Compile Include="Assets\HellephantSpawner.cs" />
      <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />

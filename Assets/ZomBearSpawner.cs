@@ -36,8 +36,13 @@ public class ZomBearSpawner : MonoBehaviour {
     public void Hit(string name)
     {
         GameObject selected = spawnedObjects.Find(x => x.name.Equals(name));
-        selected.GetComponent<BearController>().decreaseHealth();
-
-        throw new NotImplementedException();
+        BearController controller = selected.GetComponent<BearController>();
+        controller.decreaseHealth();
+        if (controller.Health <= 0)
+        {
+            selected.GetComponent<Animator>().SetTrigger("HasDied");
+            selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            Destroy(selected, 2f);
+        }
     }
 }
