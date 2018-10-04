@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class HellephantController : MonoBehaviour {
 
-    private Transform player;
+    private GameObject playerObject;
 
     public int Health { get; internal set; }
     // Use this for initialization
     void Start()
     {
         Health = 200;
-        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerGameObject != null)
-            player = playerGameObject.transform;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Health > 0)
+        UnityEngine.AI.NavMeshAgent navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        Animator anim = GetComponent<Animator>();
+        if (Health > 0 && playerObject.GetComponent<PlayerController>().Health > 0)
         {
-            if (player != null)
+			if(playerObject.transform != null){
+            navAgent.SetDestination(playerObject.transform.position);
+            anim.SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+			}
+        }
+        else
+        {
+            if (true)//transform.parent.gameObject.activeSelf)
             {
-                GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
-                Debug.Log(GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
-                GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+                navAgent.enabled = false;
+                anim.SetBool("IsWalking", false);
             }
         }
+
     }
 
     public void decreaseHealth()

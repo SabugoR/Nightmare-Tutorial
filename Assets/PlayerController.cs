@@ -6,15 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     float timer = 0;
     float timeBetweenShots = 0.3f;
-
+    RectTransform healthRect;
+    bool wasTriggered = false;
     [SerializeField] GameManager gManager;
     [SerializeField] GameObject parent;
+    [SerializeField] GameObject healthbar;
     public int Health { get; private set; }
 
     // Use this for initialization
     void Start()
     {
         Health = 100;
+        healthRect = healthbar.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -22,11 +25,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Health <= 0)
         {
-            GetComponent<Animator>().SetTrigger("HasDied");
-            Invoke("Deactivate", 2f);//maybe destroy?
+            if (!wasTriggered)
+            {
+                wasTriggered = true;
+                healthRect.sizeDelta = new Vector2(0, healthRect.sizeDelta.y);
+                GetComponent<Animator>().SetTrigger("HasDied");
+                Invoke("Deactivate", 3f);//maybe destroy?
+            }
         }
         else
         {
+            healthRect.sizeDelta = new Vector2(Health*3, healthRect.sizeDelta.y);
             timer += Time.deltaTime;
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
