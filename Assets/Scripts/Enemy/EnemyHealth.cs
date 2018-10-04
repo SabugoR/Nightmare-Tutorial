@@ -48,6 +48,7 @@ public class EnemyHealth : MonoBehaviour
             
         hitParticles.transform.position = hitPoint;
         hitParticles.Play();
+        scoreManager.UpdateCurrentPlayerHealth(currentHealth);
 
         if(currentHealth <= 0)
         {

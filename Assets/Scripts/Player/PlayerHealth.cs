@@ -80,6 +80,8 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.enabled = false;
         //playerShooting.enabled = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 
 

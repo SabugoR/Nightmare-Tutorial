@@ -5,6 +5,7 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
+    public static int playerHealth;
     [SerializeField] int mCurrentHighScore = 0;
     [SerializeField] Text mCurrentHighScoreText;
     HUDManager hudManager = null;
@@ -20,9 +21,11 @@ public class ScoreManager : MonoBehaviour
     void Update ()
     {
         hudManager.UpdateCurrentNumberOfKills(score);
+        hudManager.UpdateCurrentNumberOfHealth(playerHealth);
+
     }
 
-    
+
     public void UpdateHighScore()
     {
         mCurrentHighScore = PlayerPrefs.GetInt("HighScore", 0);
@@ -32,5 +35,10 @@ public class ScoreManager : MonoBehaviour
     public void UpdateCurrentScore()
     {
         score++;
+    }
+
+    public void UpdateCurrentPlayerHealth(int health)
+    {
+        playerHealth = health;
     }
 }
