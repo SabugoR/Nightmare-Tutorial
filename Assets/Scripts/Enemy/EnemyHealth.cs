@@ -60,7 +60,6 @@ public class EnemyHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
-
         capsuleCollider.isTrigger = true;
         // Update the player's current score by +1:
         scoreManager.UpdateCurrentScore();

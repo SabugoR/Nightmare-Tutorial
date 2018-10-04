@@ -10,7 +10,10 @@ public class BearController : MonoBehaviour {
     void Start()
     {
         Health = 100;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerGameObject != null)
+        player = playerGameObject.transform;
     }
 
     // Update is called once per frame
@@ -18,8 +21,11 @@ public class BearController : MonoBehaviour {
     {
         if (Health > 0)
         {
-            GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
-            GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+            if (player != null)
+            {
+                GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
+                GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+            }
         }
 
     }

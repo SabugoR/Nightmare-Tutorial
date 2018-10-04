@@ -10,15 +10,20 @@ public class BunnyController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Health = 50;
-		player  = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerGameObject != null)
+            player = playerGameObject.transform;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (Health > 0)
         {
-            GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
-            GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+            if (player != null)
+            {
+                GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(player.position);
+                GetComponent<Animator>().SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
+            }
         }
 
     }
