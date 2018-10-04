@@ -8,15 +8,20 @@ public class PlayerController : MonoBehaviour
     float timeBetweenShots = 0.3f;
 
     [SerializeField] GameManager gManager;
+    [SerializeField] GameObject parent;
+    public int Health { get; private set; }
 
     // Use this for initialization
     void Start()
     {
+        Health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Health <= 0)
+            parent.SetActive(false);
         timer += Time.deltaTime;
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
         var z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
@@ -46,5 +51,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Hit: " + shootHit.collider.name);
             gManager.HitEnemy(shootHit);
         }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        string enemyname = col.gameObject.name;
+        if (enemyname.Contains("Bunny"))
+            Health -= 10;
+        if (enemyname.Contains("Bear"))
+            Health -= 30;
+        if (enemyname.Contains("Hell"))
+            Health -= 50;
+            
     }
 }
