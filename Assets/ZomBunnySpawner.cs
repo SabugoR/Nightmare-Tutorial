@@ -15,7 +15,7 @@ public class ZomBunnySpawner : MonoBehaviour {
     [SerializeField] GameObject toSpawn;
 	// Use this for initialization
 	void Start () {
-		
+        GetComponentInChildren<ParticleSystem>().Play();
 	}
 	
 	// Update is called once per frame

@@ -21,20 +21,27 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Health <= 0)
-            parent.SetActive(false);
-        timer += Time.deltaTime;
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
-        var z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
-        Vector3 movement = new Vector3(x, 0f, z);
-        GetComponent<Rigidbody>().MovePosition(transform.position + movement);
-        Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 7));
-        transform.LookAt(new Vector3(worldpos.x, transform.position.y, worldpos.z));
-        GetComponent<Animator>().SetBool("IsWalking", x != 0f || z != 0f);
-        if (Input.GetButton("Fire1") && timer >= timeBetweenShots)
         {
-            timer = 0;
-            GetComponentInChildren<ParticleSystem>().Play();
-            CheckRayCastHit();
+            GetComponent<Animator>().SetTrigger("HasDied");
+            Invoke("Deactivate", 2f);//maybe destroy?
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
+            var z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
+            Vector3 movement = new Vector3(x, 0f, z);
+            GetComponent<Rigidbody>().MovePosition(transform.position + movement);
+            Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 7));
+            transform.LookAt(new Vector3(worldpos.x, transform.position.y, worldpos.z));
+            GetComponent<Animator>().SetBool("IsWalking", x != 0f || z != 0f);
+            if (Input.GetButton("Fire1") && timer >= timeBetweenShots)
+            {
+                timer = 0;
+                GetComponentInChildren<ParticleSystem>().Play();
+                CheckRayCastHit();
+            }
+
         }
 
     }
@@ -63,5 +70,10 @@ public class PlayerController : MonoBehaviour
         if (enemyname.Contains("Hell"))
             Health -= 50;
             
+    }
+
+    public void Deactivate()
+    {
+        parent.SetActive(false);
     }
 }

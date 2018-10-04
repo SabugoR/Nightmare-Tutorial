@@ -16,7 +16,7 @@ public class HellephantSpawner : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        GetComponentInChildren<ParticleSystem>().Play();
     }
 
     // Update is called once per frame
