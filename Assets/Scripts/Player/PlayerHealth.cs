@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+    public ScoreManager scoreManager = null;
 
 
     Animator anim;
@@ -28,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
+        scoreManager = GetComponent<ScoreManager>();
+
         //playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
     }
