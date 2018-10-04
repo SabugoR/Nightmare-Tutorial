@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(shootRay, out shootHit, Mathf.Infinity))
         {
             Debug.Log("Hit: " + shootHit.collider.name);
-            gManager.HitEnemy(shootHit.collider.name);
+            gManager.HitEnemy(shootHit);
         }
     }
 }

@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
-    public void HitEnemy(string name)
+    public void HitEnemy(RaycastHit castHit)
     {
-        Debug.Log("HitEnemy " + name);
-        if (name.Contains("Bunny"))
-            bunnySpawner.Hit(name);
-        if (name.Contains("Bear"))
-            bearSpawner.Hit(name);
-        if (name.Contains("Hellephant"))
-            elephantSpawner.Hit(name);
+        Debug.Log("HitEnemy " + castHit.collider.name);
+        if (castHit.collider.name.Contains("Bunny"))
+            bunnySpawner.Hit(castHit);
+        if (castHit.collider.name.Contains("Bear"))
+            bearSpawner.Hit(castHit);
+        if (castHit.collider.name.Contains("Hellephant"))
+            elephantSpawner.Hit(castHit);
     }
 }

@@ -31,11 +31,15 @@ public class ZomBunnySpawner : MonoBehaviour {
         }
     }
 
-    public void Hit(string name)
+    public void Hit(RaycastHit castHit)
     {
-        GameObject selected = spawnedObjects.Find(x => x.name.Equals(name));
+        GameObject selected = spawnedObjects.Find(x => x.name.Equals(castHit.collider.name));
         BunnyController controller = selected.GetComponent<BunnyController>();
         controller.decreaseHealth();
+        ParticleSystem particles = selected.GetComponent<ParticleSystem>();
+        particles.transform.position = castHit.point;
+        particles.Play();
+
         if (controller.Health <= 0)
         {
             selected.GetComponent<Animator>().SetTrigger("HasDied");
