@@ -9,7 +9,7 @@ public class BunnyController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Health = 100;
+        Health = 50;
 		player  = GameObject.FindGameObjectWithTag("Player").transform;
     }
 	

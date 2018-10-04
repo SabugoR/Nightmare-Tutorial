@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1") && timer >= timeBetweenShots)
         {
             timer = 0;
+            GetComponentInChildren<ParticleSystem>().Play();
             CheckRayCastHit();
         }
 

@@ -10,7 +10,7 @@ public class HellephantController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Health = 500;
+        Health = 200;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

@@ -9,7 +9,7 @@ public class ZomBearSpawner : MonoBehaviour {
     float timer = 0;
     int numberOfAlreadySpawned = 0;
     float timeBetweenSpawns = 3f;
-    int numberOfTotalSpawns = 10;
+    int numberOfTotalSpawns = 5;
     List<GameObject> spawnedObjects = new List<GameObject>();
 
     [SerializeField] GameObject toSpawn;
@@ -33,16 +33,28 @@ public class ZomBearSpawner : MonoBehaviour {
         }
     }
 
-    public void Hit(string name)
+    public void Hit(RaycastHit castHit)
     {
-        GameObject selected = spawnedObjects.Find(x => x.name.Equals(name));
-        BearController controller = selected.GetComponent<BearController>();
+        GameObject selected = spawnedObjects.Find(x => x.name.Equals(castHit.collider.name));
+        Debug.Log("new" + selected + "   " + selected.name);
+        BearController controller = selected.GetComponent("BearController") as BearController;
         controller.decreaseHealth();
+        ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
+        particles.transform.position = castHit.point;
+        particles.Play();
         if (controller.Health <= 0)
         {
             selected.GetComponent<Animator>().SetTrigger("HasDied");
             selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            Destroy(selected, 2f);
+            StartCoroutine("Deactivate", selected);
         }
+
+        // throw new NotImplementedException();
     }
+    public IEnumerator Deactivate(GameObject selected)
+    {
+        yield return new WaitForSeconds(2f);
+        selected.SetActive(false);
+    }
+
 }

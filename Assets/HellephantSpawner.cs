@@ -8,7 +8,7 @@ public class HellephantSpawner : MonoBehaviour {
 
     float timer = 0;
     int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 1f;
+    float timeBetweenSpawns = 10f;
     int numberOfTotalSpawns = 1;
     List<GameObject> spawnedObjects = new List<GameObject>();
 
@@ -33,16 +33,26 @@ public class HellephantSpawner : MonoBehaviour {
         }
     }
 
-    public void Hit(string name)
+    public void Hit(RaycastHit castHit)
     {
-        GameObject selected = spawnedObjects.Find(x => x.name.Equals(name));
+        GameObject selected = spawnedObjects.Find(x => x.name.Equals(castHit.collider.name));
         HellephantController controller = selected.GetComponent<HellephantController>();
         controller.decreaseHealth();
+        ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
+        particles.transform.position = castHit.point;
+        particles.Play();
         if (controller.Health <= 0)
         {
             selected.GetComponent<Animator>().SetTrigger("HasDied");
             selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            Destroy(selected, 2f);
+            StartCoroutine("Deactivate", selected);
         }
+
+        // throw new NotImplementedException();
+    }
+    public IEnumerator Deactivate(GameObject selected)
+    {
+        yield return new WaitForSeconds(2f);
+        selected.SetActive(false);
     }
 }

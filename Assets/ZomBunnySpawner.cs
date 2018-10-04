@@ -36,7 +36,7 @@ public class ZomBunnySpawner : MonoBehaviour {
         GameObject selected = spawnedObjects.Find(x => x.name.Equals(castHit.collider.name));
         BunnyController controller = selected.GetComponent<BunnyController>();
         controller.decreaseHealth();
-        ParticleSystem particles = selected.GetComponent<ParticleSystem>();
+        ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
         particles.transform.position = castHit.point;
         particles.Play();
 
@@ -44,8 +44,14 @@ public class ZomBunnySpawner : MonoBehaviour {
         {
             selected.GetComponent<Animator>().SetTrigger("HasDied");
             selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            Destroy(selected, 2f);
+            StartCoroutine("Deactivate", selected);
         }
+
        // throw new NotImplementedException();
+    }
+    public IEnumerator Deactivate(GameObject selected)
+    {
+            yield return new WaitForSeconds(2f);
+            selected.SetActive(false);
     }
 }

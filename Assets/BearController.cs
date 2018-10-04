@@ -9,7 +9,7 @@ public class BearController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Health = 200;
+        Health = 100;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
