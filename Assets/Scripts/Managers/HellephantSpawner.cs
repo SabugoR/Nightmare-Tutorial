@@ -28,8 +28,8 @@ public class HellephantSpawner : MonoBehaviour {
         {
             timer = 0;
             numberOfAlreadySpawned++;
-            spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
-            spawnedObjects.Last().name = "Hellephant " + numberOfAlreadySpawned;
+           // spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
+           // spawnedObjects.Last().name = "Hellephant " + numberOfAlreadySpawned;
         }
     }
 

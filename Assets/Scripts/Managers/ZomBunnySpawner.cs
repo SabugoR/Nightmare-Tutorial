@@ -26,8 +26,8 @@ public class ZomBunnySpawner : MonoBehaviour {
         {
             timer = 0;
             numberOfAlreadySpawned++;
-            spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
-            spawnedObjects.Last().name = "ZomBunny " + numberOfAlreadySpawned;
+          //  spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
+           // spawnedObjects.Last().name = "ZomBunny " + numberOfAlreadySpawned;
         }
     }
 
