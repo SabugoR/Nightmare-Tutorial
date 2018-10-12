@@ -108,7 +108,7 @@ MonoBehaviour:
   m_MinSize: {x: 913, y: 442}
   m_MaxSize: {x: 22008, y: 10021}
   vertical: 1
-  controlID: 4337
+  controlID: 1475
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 913, y: 442}
   m_MaxSize: {x: 22008, y: 10021}
   vertical: 0
-  controlID: 4338
+  controlID: 1476
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 4339
+  controlID: 1477
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -521,9 +521,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a44e0000
-    m_LastClickedID: 20132
-    m_ExpandedIDs: baf4feffeef5feff0ef7feff72f9feffa4f9feffb6f9feff3c0cffff700dffff900efffff410ffff2611ffff3811ffffe824ffff0c26ffff1c27ffff7c29ffffaa29ffffb829ffffeaf7ffffe6fbffff0000000084360000f6360000ba4e0000
+    m_SelectedIDs: 86350000
+    m_LastClickedID: 13702
+    m_ExpandedIDs: e6fbffff00000000863500001c360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -584,20 +584,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Resources
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Resources
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Sabugo\Documents\UnityProjects\Santa demo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 9c340000
-    m_LastClickedID: 13468
-    m_ExpandedIDs: 00000000222c00002a2c0000142e0000662e00007e2e0000962f0000982f0000c22f0000d02f0000c6320000443400005e340000ac3400000a3600000c3600000e36000010360000123600001436000016360000183600001a3600001c3600001e360000203600002236000024360000263600002836000000ca9a3b
+    m_SelectedIDs: b0320000
+    m_LastClickedID: 12976
+    m_ExpandedIDs: 00000000122c00001a2c0000042e0000562e00006e2e0000862f0000882f0000b22f0000c02f0000b0320000003400001a340000683400006c3800006e38000070380000723800007438000076380000783800007a3800007c3800007e38000080380000823800008438000086380000883800008a38000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -625,7 +625,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000222c00002a2c0000142e0000662e00007e2e0000962f0000982f0000c22f0000d02f0000c6320000443400005e340000ac3400000a3600000c3600000e36000010360000123600001436000016360000183600001a3600001c3600001e360000203600002236000024360000263600002836000000ca9a3b
+    m_ExpandedIDs: 00000000122c00001a2c0000042e0000562e00006e2e0000862f0000882f0000b22f0000c02f0000b0320000003400001a340000683400006c3800006e38000070380000723800007438000076380000783800007a3800007c3800007e38000080380000823800008438000086380000883800008a38000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
