@@ -12,8 +12,8 @@ public class HUDManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        numberOfKillsText.text = killsText + "0";
-        numberOfHealthLeft.text = healthText + "100";
+       // numberOfKillsText.text = killsText + "0";
+     //   numberOfHealthLeft.text = healthText + "100";
 
     }
 

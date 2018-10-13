@@ -18,9 +18,11 @@ private Transform player;
     {
         UnityEngine.AI.NavMeshAgent navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         Animator anim = GetComponent<Animator>();
-        if (Health > 0 && playerObject.GetComponent<PlayerController>().Health > 0)
+
+        if (playerObject != null && playerObject.transform != null)
         {
-            if(playerObject.transform != null){
+            if (Health > 0 && playerObject.GetComponent<PlayerController>().Health > 0)
+        {
             navAgent.SetDestination(playerObject.transform.position);
             anim.SetBool("IsWalking", GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.magnitude > 0);
 			}

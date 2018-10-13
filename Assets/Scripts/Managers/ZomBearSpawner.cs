@@ -13,10 +13,12 @@ public class ZomBearSpawner : MonoBehaviour {
     List<GameObject> spawnedObjects = new List<GameObject>();
 
     [SerializeField] GameObject toSpawn;
+    AudioSource[] sounds;
     // Use this for initialization
     void Start()
     {
         GetComponentInChildren<ParticleSystem>().Play();
+        sounds = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,8 +30,9 @@ public class ZomBearSpawner : MonoBehaviour {
         {
             timer = 0;
             numberOfAlreadySpawned++;
-           // spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
-           // spawnedObjects.Last().name = "ZomBear " + numberOfAlreadySpawned;
+            spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
+            spawnedObjects.Last().name = "ZomBear " + numberOfAlreadySpawned;
+            spawnedObjects.Last().GetComponent<Collider>().isTrigger = true;
         }
     }
 
@@ -42,8 +45,10 @@ public class ZomBearSpawner : MonoBehaviour {
         ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
         particles.transform.position = castHit.point;
         particles.Play();
+        sounds[0].Play();
         if (controller.Health <= 0)
         {
+            sounds[1].Play();
             selected.GetComponent<Animator>().SetTrigger("HasDied");
             selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             StartCoroutine("Deactivate", selected);
