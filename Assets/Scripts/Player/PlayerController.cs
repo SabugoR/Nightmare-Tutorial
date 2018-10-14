@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.LookAt(new Vector3(gunStick.Horizontal, 0f, gunStick.Vertical) + transform.position);
             }
-            if (Input.GetButton("Jump") && gunTimer >= timeBetweenShots)
+            if (Input.GetKeyDown("space") && gunTimer >= timeBetweenShots)
             {
                 CheckRayCastHit();
             }
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour
         Ray shootRay = new Ray(); ;
         RaycastHit shootHit;
         shootRay.origin = laserSight.transform.position;//transform.position;
-        shootRay.direction = laserSight.transform.forward;
+        shootRay.direction = transform.forward;
         Debug.DrawLine(shootRay.origin, shootRay.direction*50, Color.blue, 1f);
         gunTimer = 0;
         GetComponentInChildren<ParticleSystem>().Play();
@@ -134,5 +135,6 @@ public class PlayerController : MonoBehaviour
     public void Deactivate()
     {
         parent.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
