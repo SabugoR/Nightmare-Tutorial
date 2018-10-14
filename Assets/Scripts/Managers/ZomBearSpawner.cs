@@ -8,7 +8,7 @@ public class ZomBearSpawner : MonoBehaviour {
 
     float timer = 0;
     int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 3f;
+    float timeBetweenSpawns = 5f;
     int numberOfTotalSpawns = 5;
     List<GameObject> spawnedObjects = new List<GameObject>();
 

@@ -8,7 +8,7 @@ public class ZomBunnySpawner : MonoBehaviour {
 
     float timer = 0;
     int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 1f;
+    float timeBetweenSpawns = 2f;
     int numberOfTotalSpawns = 10;
     List<GameObject> spawnedObjects = new List<GameObject>();
     AudioSource[] sounds;

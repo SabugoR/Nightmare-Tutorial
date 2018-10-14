@@ -8,7 +8,7 @@ public class HellephantSpawner : MonoBehaviour {
 
     float timer = 0;
     int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 10f;
+    float timeBetweenSpawns = 15f;
     int numberOfTotalSpawns = 1;
     List<GameObject> spawnedObjects = new List<GameObject>();
     AudioSource[] sounds;

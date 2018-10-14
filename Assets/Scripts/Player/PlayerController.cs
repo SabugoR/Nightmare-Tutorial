@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool enemyContact = false;
     Collider currentEnemyCollider = null;
     public int Health { get; private set; }
+    public bool IsRendered { get; internal set; }
+
     AudioSource[] sounds;//death, hurt, gunshot
     LineRenderer laserSight;
     // Use this for initialization
@@ -46,46 +48,51 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            healthRect.sizeDelta = new Vector2(Health*2f, healthRect.sizeDelta.y);
-            gunTimer += Time.deltaTime;
-            collisionTimer += Time.deltaTime;
-            var x = walkStick.Horizontal * Time.deltaTime * 5.0f;
-            var z = walkStick.Vertical * Time.deltaTime * 5.0f;
-            Vector3 movement = new Vector3(x, 0f, z);
-            GetComponent<Rigidbody>().MovePosition(transform.position + movement);
-            GetComponent<Animator>().SetBool("IsWalking", x != 0f || z != 0f);
-            if(enemyContact && currentEnemyCollider != null)
+            if (IsRendered)
             {
-                EnemyContact(currentEnemyCollider);
+                healthRect.sizeDelta = new Vector2(Health * 2f, healthRect.sizeDelta.y);
+                gunTimer += Time.deltaTime;
+                collisionTimer += Time.deltaTime;
+                var x = walkStick.Horizontal * Time.deltaTime * 5.0f;
+                var z = walkStick.Vertical * Time.deltaTime * 5.0f;
+                Vector3 movement = new Vector3(x, 0f, z);
+                GetComponent<Rigidbody>().MovePosition(transform.position + movement);
+                GetComponent<Animator>().SetBool("IsWalking", x != 0f || z != 0f);
+                if (enemyContact && currentEnemyCollider != null)
+                {
+                    EnemyContact(currentEnemyCollider);
+                }
+                if (gunStick.Horizontal != 0 || gunStick.Vertical != 0)
+                {
+                    transform.LookAt(new Vector3(gunStick.Horizontal, 0f, gunStick.Vertical) + transform.position);
+                }
+               /* if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && gunTimer >= timeBetweenShots)
+                {
+                    CheckRayCastHit();
+                }*/
             }
-            if (gunStick.Horizontal != 0 || gunStick.Vertical != 0)
-            {
-                transform.LookAt(new Vector3(gunStick.Horizontal, 0f, gunStick.Vertical) + transform.position);
-            }
-            if (Input.GetKeyDown("space") && gunTimer >= timeBetweenShots)
-            {
-                CheckRayCastHit();
-            }
-
         }
 
     }
 
-    private void CheckRayCastHit()
+    public void CheckRayCastHit()
     {
-        Ray shootRay = new Ray(); ;
-        RaycastHit shootHit;
-        shootRay.origin = laserSight.transform.position;//transform.position;
-        shootRay.direction = transform.forward;
-        Debug.DrawLine(shootRay.origin, shootRay.direction*50, Color.blue, 1f);
-        gunTimer = 0;
-        GetComponentInChildren<ParticleSystem>().Play();
-        sounds[2].Play();
-        bool hit = Physics.Raycast(shootRay, out shootHit, Mathf.Infinity);
-        if (hit)
+        if (IsRendered && gunTimer >= timeBetweenShots)
         {
-            Debug.Log("Hit: " + shootHit.collider.name);
-            gManager.HitEnemy(shootHit);
+            Ray shootRay = new Ray(); ;
+            RaycastHit shootHit;
+            shootRay.origin = laserSight.transform.position;//transform.position;
+            shootRay.direction = transform.forward;
+            Debug.DrawLine(shootRay.origin, shootRay.direction * 50, Color.blue, 2f);
+            gunTimer = 0;
+            GetComponentInChildren<ParticleSystem>().Play();
+            sounds[2].Play();
+            bool hit = Physics.Raycast(shootRay, out shootHit, Mathf.Infinity);
+            if (hit)
+            {
+                Debug.Log("Hit: " + shootHit.collider.name);
+                gManager.HitEnemy(shootHit);
+            }
         }
     }
 
