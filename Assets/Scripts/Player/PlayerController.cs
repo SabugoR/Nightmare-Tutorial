@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    ScoreManager scoreManager = null;
     float gunTimer = 0;
     float collisionTimer = 0;
     float timeBetweenShots = 0.3f;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        scoreManager = GetComponent<ScoreManager>();
         laserSight = GetComponentInChildren<LineRenderer>();
         sounds = GetComponents<AudioSource>();
         Health = 100;
@@ -142,6 +144,7 @@ public class PlayerController : MonoBehaviour
     public void Deactivate()
     {
         parent.SetActive(false);
+        scoreManager.SetHighScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
