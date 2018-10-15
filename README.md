@@ -1,6 +1,6 @@
 # NightmareAR
-Just an AR top down shooter
-A precompiled apk is in the "Compiled APK" folder
+Just an AR top down shooter.
+A precompiled apk is in the "Compiled APK" folder.
 The image targets are in the "ImageTargets" folder.
 
 The Stones image targets apawns in the player model, the rest are as follow: 
