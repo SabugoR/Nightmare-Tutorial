@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     ScoreManager scoreManager = null;
     float gunTimer = 0;
     float collisionTimer = 0;
-    float timeBetweenShots = 0.3f;
+    float timeBetweenShots = 0.25f;
     RectTransform healthRect;
     bool wasTriggered = false;
     [SerializeField] GameManager gManager;
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     void EnemyContact(Collider col)
     {
-       // Debug.Log("EnemyContact");
+       Debug.Log("EnemyContact: "+col.gameObject.name);
         if (collisionTimer >= timeBetweenShots)
         {
             sounds[1].Play();
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 Health -= 10;
             if (enemyname.Contains("Bear"))
                 Health -= 30;
-            if (enemyname.Contains("Hell"))
+            if (enemyname.Contains("ell"))
                 Health -= 50;
 
             
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isEnemyName(string name)
     {
-        return name.Contains("Bunny") || name.Contains("Bear") || name.Contains("elephant");
+        return name.Contains("Bunny") || name.Contains("Bear") || name.Contains("ellephant");
     }
 
     void OnTriggerExit(Collider col)

@@ -13,6 +13,14 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void OnWinPlayButtonClicked()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void OnWinQuitButtonClicked()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void OnCongratulateClicked() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }

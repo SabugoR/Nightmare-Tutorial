@@ -8,9 +8,20 @@ public class ZomBearSpawner : MonoBehaviour {
 
     bool hasDied = false;
     float timer = 0;
-    int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 5f;
-    int numberOfTotalSpawns = 5;
+    public int numberOfAlreadySpawned { get; private set; }
+    public int ListSize
+    {
+        get
+        {
+            return spawnedObjects.Count;
+        }
+        set
+        {
+        }
+    }
+
+    float timeBetweenSpawns = 10f;
+    int numberOfTotalSpawns = 2;
     List<GameObject> spawnedObjects = new List<GameObject>();
 
     [SerializeField] GameObject HUD;
@@ -27,7 +38,7 @@ public class ZomBearSpawner : MonoBehaviour {
     void Update()
     {
         timer += Time.deltaTime;
-
+        ListSize = spawnedObjects.Count;
         if (timer >= timeBetweenSpawns && numberOfAlreadySpawned < numberOfTotalSpawns)
         {
             timer = 0;

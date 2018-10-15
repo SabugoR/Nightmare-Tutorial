@@ -5,6 +5,7 @@ SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Level01.unity
 Assets/Scenes/DeathMenu.unity
+Assets/Scenes/WinMenu.unity
 SceneListEnd?
 60442564730c384116fbe14388b6f403 Assembly-CSharp.dll:.CFX_LightFlicker
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret

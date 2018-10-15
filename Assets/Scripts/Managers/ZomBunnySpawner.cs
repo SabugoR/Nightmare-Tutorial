@@ -8,9 +8,21 @@ public class ZomBunnySpawner : MonoBehaviour {
 
     bool hasDied = false;
     float timer = 0;
-    int numberOfAlreadySpawned = 0;
-    float timeBetweenSpawns = 2f;
-    int numberOfTotalSpawns = 10;
+    public int numberOfAlreadySpawned { get; private set; }
+    public int ListSize
+    {
+        get
+        {
+            return spawnedObjects.Count;
+        }
+        set
+        {
+        }
+    }
+       
+
+    float timeBetweenSpawns = 3f;
+    int numberOfTotalSpawns = 5;
     List<GameObject> spawnedObjects = new List<GameObject>();
     AudioSource[] sounds;
     [SerializeField] GameObject HUD;
@@ -25,7 +37,7 @@ public class ZomBunnySpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-
+        ListSize = spawnedObjects.Count;
         if(timer >= timeBetweenSpawns && numberOfAlreadySpawned < numberOfTotalSpawns)
         {
             timer = 0;
@@ -49,12 +61,14 @@ public class ZomBunnySpawner : MonoBehaviour {
             sounds[0].Play();
             if (controller.Health <= 0)
             {
-                Debug.Log(count++);
                 HUD.GetComponent<HUDManager>().UpdateCurrentNumberOfKills(50);
                 sounds[1].Play();
                 selected.GetComponent<Animator>().SetTrigger("HasDied");
                 selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                Debug.Log("alreadyspawned: " + numberOfAlreadySpawned);
+                Debug.Log("listsize: " + ListSize);
                 spawnedObjects.Remove(selected);
+                Debug.Log("listsize: " + ListSize);
                 StartCoroutine("Deactivate", selected);
             }
         }
