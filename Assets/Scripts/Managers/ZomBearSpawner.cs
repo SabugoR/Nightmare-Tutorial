@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class ZomBearSpawner : MonoBehaviour {
 
+    bool hasDied = false;
     float timer = 0;
     int numberOfAlreadySpawned = 0;
     float timeBetweenSpawns = 5f;
     int numberOfTotalSpawns = 5;
     List<GameObject> spawnedObjects = new List<GameObject>();
 
+    [SerializeField] GameObject HUD;
     [SerializeField] GameObject toSpawn;
     AudioSource[] sounds;
     // Use this for initialization
@@ -39,21 +41,26 @@ public class ZomBearSpawner : MonoBehaviour {
     public void Hit(RaycastHit castHit)
     {
         GameObject selected = spawnedObjects.Find(x => x.name.Equals(castHit.collider.name));
-        Debug.Log("new" + selected + "   " + selected.name);
-        BearController controller = selected.GetComponent("BearController") as BearController;
-        controller.decreaseHealth();
-        ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
-        particles.transform.position = castHit.point;
-        particles.Play();
-        sounds[0].Play();
-        if (controller.Health <= 0)
+        if (selected != null)
         {
-            sounds[1].Play();
-            selected.GetComponent<Animator>().SetTrigger("HasDied");
-            selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            StartCoroutine("Deactivate", selected);
+            Debug.Log("new" + selected + "   " + selected.name);
+            BearController controller = selected.GetComponent("BearController") as BearController;
+            controller.decreaseHealth();
+            ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
+            particles.transform.position = castHit.point;
+            particles.Play();
+            sounds[0].Play();
+            if (controller.Health <= 0)
+            {
+                HUD.GetComponent<HUDManager>().UpdateCurrentNumberOfKills(50);
+                sounds[1].Play();
+                selected.GetComponent<Animator>().SetTrigger("HasDied");
+                selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                HUD.GetComponent<HUDManager>().UpdateCurrentNumberOfKills(100);
+                spawnedObjects.Remove(selected);
+                StartCoroutine("Deactivate", selected);
+            }
         }
-
         // throw new NotImplementedException();
     }
     public IEnumerator Deactivate(GameObject selected)

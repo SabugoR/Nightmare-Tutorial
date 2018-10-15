@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 public class HellephantSpawner : MonoBehaviour {
-
+    bool hasDied = false;
     float timer = 0;
     int numberOfAlreadySpawned = 0;
     float timeBetweenSpawns = 15f;
@@ -13,6 +13,7 @@ public class HellephantSpawner : MonoBehaviour {
     List<GameObject> spawnedObjects = new List<GameObject>();
     AudioSource[] sounds;
     [SerializeField] GameObject toSpawn;
+    [SerializeField] GameObject HUD;
     // Use this for initialization
     void Start()
     {
@@ -31,6 +32,7 @@ public class HellephantSpawner : MonoBehaviour {
             numberOfAlreadySpawned++;
             spawnedObjects.Add(Instantiate(toSpawn, transform.position, transform.rotation));
             spawnedObjects.Last().name = "Hellephant " + numberOfAlreadySpawned;
+            HUD.GetComponent<HUDManager>().UpdateCurrentNumberOfKills(100);
             spawnedObjects.Last().GetComponent<Collider>().isTrigger = true;
         }
     }
@@ -38,20 +40,25 @@ public class HellephantSpawner : MonoBehaviour {
     public void Hit(RaycastHit castHit)
     {
         GameObject selected = spawnedObjects.Find(x => x.name.Equals(castHit.collider.name));
-        HellephantController controller = selected.GetComponent<HellephantController>();
-        controller.decreaseHealth();
-        ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
-        particles.transform.position = castHit.point;
-        particles.Play();
-        sounds[0].Play();
-        if (controller.Health <= 0)
+        if (selected != null)
         {
-            sounds[1].Play();
-            selected.GetComponent<Animator>().SetTrigger("HasDied");
-            selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-            StartCoroutine("Deactivate", selected);
+            HellephantController controller = selected.GetComponent<HellephantController>();
+            controller.decreaseHealth();
+            ParticleSystem particles = selected.GetComponentInChildren<ParticleSystem>();
+            particles.transform.position = castHit.point;
+            particles.Play();
+            sounds[0].Play();
+            if (controller.Health <= 0)
+            {
+                
+                HUD.GetComponent<HUDManager>().UpdateCurrentNumberOfKills(50);
+                sounds[1].Play();
+                selected.GetComponent<Animator>().SetTrigger("HasDied");
+                selected.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                spawnedObjects.Remove(selected);
+                StartCoroutine("Deactivate", selected);
+            }
         }
-
         // throw new NotImplementedException();
     }
     public IEnumerator Deactivate(GameObject selected)

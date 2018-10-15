@@ -15,7 +15,7 @@ public class StartSpawning : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (!alreadySpawned && trackbleBehaviour.CurrentStatus == TrackableBehaviour.Status.TRACKED)
+       if (!alreadySpawned && trackbleBehaviour.CurrentStatus == TrackableBehaviour.Status.TRACKED)
         {
             if (toSpawn.tag != "Player")
             {
@@ -31,9 +31,8 @@ public class StartSpawning : MonoBehaviour {
                 }
                 toSpawn.GetComponent<PlayerController>().IsRendered = true;
             }
-            // transform.position -= new Vector3(0f, transform.position.y, 0f);
-        }
-       // toSpawn.transform.position = trackbleBehaviour.transform.position;
+           
+       } // 
 
 
     }

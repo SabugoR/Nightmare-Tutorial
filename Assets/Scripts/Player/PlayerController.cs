@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        scoreManager = GetComponent<ScoreManager>();
+        scoreManager = parent.GetComponent<ScoreManager>();
         laserSight = GetComponentInChildren<LineRenderer>();
         sounds = GetComponents<AudioSource>();
         Health = 100;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             if (IsRendered)
             {
-                healthRect.sizeDelta = new Vector2(Health * 2f, healthRect.sizeDelta.y);
+                healthRect.sizeDelta = new Vector2(Health*4, healthRect.sizeDelta.y);
                 gunTimer += Time.deltaTime;
                 collisionTimer += Time.deltaTime;
                 var x = walkStick.Horizontal * Time.deltaTime * 5.0f;
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
             bool hit = Physics.Raycast(shootRay, out shootHit, Mathf.Infinity);
             if (hit)
             {
-                Debug.Log("Hit: " + shootHit.collider.name);
+               // Debug.Log("Hit: " + shootHit.collider.name);
                 gManager.HitEnemy(shootHit);
             }
         }
@@ -112,6 +112,8 @@ public class PlayerController : MonoBehaviour
                 Health -= 30;
             if (enemyname.Contains("Hell"))
                 Health -= 50;
+
+            
         }
             
     }

@@ -5,15 +5,11 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour {
     [SerializeField] Text numberOfKillsText;
-    [SerializeField] Text numberOfHealthLeft;
+    [SerializeField] GameObject player;
 
-    string killsText = "Kills: ";
-    string healthText = "Health: ";
 
     // Use this for initialization
     void Start () {
-       // numberOfKillsText.text = killsText + "0";
-     //   numberOfHealthLeft.text = healthText + "100";
 
     }
 
@@ -23,13 +19,12 @@ public class HUDManager : MonoBehaviour {
     }
 
     public void UpdateCurrentNumberOfKills(int currentKillsNumber)
-    {
-        numberOfKillsText.text = killsText + currentKillsNumber;
-    }
 
-    public void UpdateCurrentNumberOfHealth(int playerHealth)
     {
-        numberOfHealthLeft.text = healthText + playerHealth;
+        
+        numberOfKillsText.text = (int.Parse(numberOfKillsText.text) + currentKillsNumber).ToString();
+        player.GetComponent<ScoreManager>().UpdateCurrentScore(int.Parse(numberOfKillsText.text));
     }
+    
 
 }

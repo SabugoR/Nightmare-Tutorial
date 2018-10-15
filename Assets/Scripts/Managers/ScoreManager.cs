@@ -4,24 +4,20 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int score;
+    public static int currentScore = 0;
     public static int playerHealth;
     [SerializeField] int mCurrentHighScore = 0;
     [SerializeField] Text mCurrentHighScoreText;
-    HUDManager hudManager = null;
     Text text;
 
 
     void Awake ()
     {
-        hudManager = GetComponent<HUDManager>();
     }
 
 
     void Update ()
     {
-        hudManager.UpdateCurrentNumberOfKills(score);
-        hudManager.UpdateCurrentNumberOfHealth(playerHealth);
 
     }
 
@@ -29,16 +25,19 @@ public class ScoreManager : MonoBehaviour
     public void UpdateHighScore()
     {
         mCurrentHighScore = PlayerPrefs.GetInt("HighScore", 0);
-        mCurrentHighScoreText.text = mCurrentHighScore.ToString();
+        if(mCurrentHighScoreText != null && mCurrentHighScoreText.text != null)
+               mCurrentHighScoreText.text = mCurrentHighScore.ToString();
     }
     public void SetHighScore()
     {
-        PlayerPrefs.SetInt("HighScore", score);
+        if(PlayerPrefs.GetInt("HighScore") < currentScore)
+            PlayerPrefs.SetInt("HighScore", currentScore);
+        Debug.Log("Playerprefs int: " + PlayerPrefs.GetInt("HighScore"));
     }
 
-    public void UpdateCurrentScore()
+    public void UpdateCurrentScore(int score)
     {
-        score++;
+        currentScore=score;
     }
 
     public void UpdateCurrentPlayerHealth(int health)

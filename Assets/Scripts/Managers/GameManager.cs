@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
     public void HitEnemy(RaycastHit castHit)
     {
-        Debug.Log("HitEnemy " + castHit.collider.name);
+        //Debug.Log("HitEnemy " + castHit.collider.name);
         if (castHit.collider.name.Contains("Bunny"))
             bunnySpawner.Hit(castHit);
         if (castHit.collider.name.Contains("Bear"))

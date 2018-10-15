@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1140,7 +1140,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ilan, please bless us with your better english here !
+  m_Text: 'Place any of the images in front of the camera, and the corresponding object
+    will be spawned onto the playing field.
+
+
+    Once a player was spawned  use the joysticks to move and aim, and the reticule
+    button to shoot.
+
+
+    Good luck!'
 --- !u!222 &808970526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1952,9 +1960,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2124067733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76b359ef46a5244fac2201e6e9a1779, type: 3}
+  m_Script: {fileID: 11500000, guid: 86e378bc199fbd343bceabbd3a16d73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mCurrentHighScore: 0
+  mCurrentHighScoreText: {fileID: 2137724255}
 --- !u!1 &2134988042
 GameObject:
   m_ObjectHideFlags: 0
